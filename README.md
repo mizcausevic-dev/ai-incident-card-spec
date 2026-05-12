@@ -103,6 +103,12 @@ A family of open specifications for the answer-engine and agent era:
 | [Classroom AI AUP](https://github.com/mizcausevic-dev/classroom-ai-aup-spec) | District / school / course AI policy (third leg of the EdTech trio) |
 | **AI Incident Card** (this) | Post-incident disclosure for AI agents — references every other affected document |
 
+### Related testing artifact
+
+| Repo | What it does |
+|---|---|
+| [`prompt-injection-bench`](https://github.com/mizcausevic-dev/prompt-injection-bench) | 30-attack open corpus + Python harness. Failed runs become natural inputs for Incident Cards filed under `categories: ["prompt_injection_success"]`. |
+
 Single landing: [`kinetic-gain-protocol-suite`](https://github.com/mizcausevic-dev/kinetic-gain-protocol-suite).
 
 ---
