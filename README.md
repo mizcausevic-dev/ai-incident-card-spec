@@ -1,5 +1,8 @@
 # AI Incident Card
 
+[![Validate examples](https://github.com/mizcausevic-dev/ai-incident-card-spec/actions/workflows/validate.yml/badge.svg)](https://github.com/mizcausevic-dev/ai-incident-card-spec/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 > **The CVE-equivalent for AI agent failures.**
 > Vendor-published, machine-readable post-incident disclosure that cross-references every other affected document in the Kinetic Gain Protocol Suite.
 
