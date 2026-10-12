@@ -37,7 +37,8 @@
     "published_by": { "$ref": "#/$defs/PublishedBy" },
     "published_at": { "type": "string", "format": "date-time" },
     "last_updated_at": { "type": "string", "format": "date-time" },
-    "revision": { "$ref": "#/$defs/Revision" }
+    "revision": { "$ref": "#/$defs/Revision" },
+    "aviation_profile": { "$ref": "#/$defs/AviationProfile" }
   },
 
   "allOf": [
@@ -351,6 +352,49 @@
         },
         "contact_uri": { "type": "string", "format": "uri" },
         "pgp_fingerprint": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "AviationProfile": {
+      "type": "object",
+      "description": "Optional aviation context for an AI Incident Card. This profile is a disclosure aid, not an occurrence filing, ECCAIRS-compatible record, or maintenance release.",
+      "required": ["profile_version", "domain", "incident_scope"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_version": { "type": "string", "const": "0.1" },
+        "domain": {
+          "type": "string",
+          "enum": ["aircraft_system", "maintenance", "atm_ans", "uas", "other"]
+        },
+        "incident_scope": { "type": "string", "minLength": 1 },
+        "aviation_ml_card_uri": { "type": "string", "format": "uri" },
+        "mro_signoff_card_uris": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" },
+          "uniqueItems": true
+        },
+        "adrep_category_refs": {
+          "type": "array",
+          "description": "Publisher-asserted taxonomy references only; this schema does not validate category assignment or ECCAIRS compatibility.",
+          "items": { "$ref": "#/$defs/AdrepCategoryReference" },
+          "uniqueItems": true
+        },
+        "maintenance_release_note": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional description of relationship to the organisation's separate authorised maintenance-release process; this card is not that release."
+        }
+      }
+    },
+
+    "AdrepCategoryReference": {
+      "type": "object",
+      "required": ["code", "mapping_status"],
+      "additionalProperties": false,
+      "properties": {
+        "code": { "type": "string", "pattern": "^[A-Z][A-Z0-9-]{1,15}$" },
+        "taxonomy_version": { "type": "string", "minLength": 1 },
+        "mapping_status": { "type": "string", "const": "publisher_asserted_unverified" }
       }
     },
 

@@ -3,7 +3,7 @@
 **Status:** Draft
 **Version:** 0.1.0
 **Editor:** Miz Causevic
-**License:** AGPL-3.0 (this document, schema, and examples). Implementations are unrestricted.
+**License:** MIT (this document, schema, and examples; see `LICENSE`).
 
 RFC 2119 keywords (**MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, **MAY**) apply throughout.
 
@@ -196,6 +196,22 @@ ISO 8601 timestamp of the latest update to this card. Equal to `published_at` fo
 |---|---|---|---|
 | `number` | integer | yes | 1, 2, 3, ... — increments on each update. |
 | `change_summary` | string | yes | What changed since the previous revision. |
+
+### 4.16 `aviation_profile` (optional, informative)
+
+An aviation incident may add the [aviation profile](profiles/aviation.md) to the existing Incident Card. The profile records the aviation workflow affected and may point to a system disclosure or AI-assisted maintenance review card. It does not replace the Incident Card's required fields or alter its conditional rules.
+
+| Field | Type | Required within profile | Description |
+|---|---|---|---|
+| `profile_version` | string | yes | `0.1`. |
+| `domain` | enum | yes | `aircraft_system`, `maintenance`, `atm_ans`, `uas`, or `other`. |
+| `incident_scope` | string | yes | Plain-language aviation context for the failure. |
+| `aviation_ml_card_uri` | URI | no | Related vendor disclosure, if available. |
+| `mro_signoff_card_uris` | array of URI | no | Related artifact-bound review cards, if available. |
+| `adrep_category_refs` | array of object | no | Publisher-asserted taxonomy references. Each has a `code` and `mapping_status: "publisher_asserted_unverified"`; the optional `taxonomy_version` identifies the version claimed by the publisher. The schema checks token shape, not taxonomy validity or assignment. |
+| `maintenance_release_note` | string | no | Relationship to a separate authorised maintenance-release process. |
+
+An aviation profile is neither an occurrence filing nor an ECCAIRS-compatible exchange record. A review card or signature is not a certificate of release to service. Real reporting and maintenance release remain subject to the applicable authority and authorised personnel.
 
 ## 5. Harm category enum
 

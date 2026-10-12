@@ -48,6 +48,7 @@ A single Incident Card lets a reviewer chain through to every affected document 
 | **Regulatory** | What authorities were notified (EU AI Act Art. 73, GDPR, FERPA, COPPA, …), deadline-met boolean, filing URIs |
 | **Withdrawal** | First-class retraction — preserves the URL while marking the report withdrawn with a documented reason |
 | **Published by** | Vendor / third-party-researcher / user / regulator / auditor |
+| **Aviation profile** | Optional safety-context and related-card references for aviation incidents; not an occurrence filing or maintenance release |
 
 ## Conditional rules enforced by the schema
 
@@ -81,6 +82,8 @@ Beyond the schema, the spec specifies a **SHOULD** for critical severity: `affec
   - [`tutor-mandated-reporter-failure.json`](examples/tutor-mandated-reporter-failure.json) — critical · K-12 tutor missed a self-harm disclosure inside a word problem; FERPA + state-AG filings; resolved
   - [`prompt-injection-support-agent.json`](examples/prompt-injection-support-agent.json) — high · base64-encoded log block hijacked the planning step; tool-abuse + refusal-taxonomy violation; mitigated
   - [`pii-leak-cite-check.json`](examples/pii-leak-cite-check.json) — high · whitespace bug in robots.txt parsing surfaced cached PII; GDPR Art. 33 filing; resolved
+  - [`aviation-maintenance-synthetic.json`](profiles/aviation/examples/aviation-maintenance-synthetic.json) — fictional maintenance AI review near-miss; no real aircraft, operator, person, or safety event
+- [`profiles/aviation.md`](profiles/aviation.md) — optional aviation profile guidance and its limits
 
 ## Status
 
