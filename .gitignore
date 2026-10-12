@@ -5,3 +5,5 @@ package.json
 *.log
 .vscode/
 .idea/
+__pycache__/
+*.pyc
