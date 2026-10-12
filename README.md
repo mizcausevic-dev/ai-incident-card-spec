@@ -82,7 +82,7 @@ Beyond the schema, the spec specifies a **SHOULD** for critical severity: `affec
   - [`tutor-mandated-reporter-failure.json`](examples/tutor-mandated-reporter-failure.json) — critical · K-12 tutor missed a self-harm disclosure inside a word problem; FERPA + state-AG filings; resolved
   - [`prompt-injection-support-agent.json`](examples/prompt-injection-support-agent.json) — high · base64-encoded log block hijacked the planning step; tool-abuse + refusal-taxonomy violation; mitigated
   - [`pii-leak-cite-check.json`](examples/pii-leak-cite-check.json) — high · whitespace bug in robots.txt parsing surfaced cached PII; GDPR Art. 33 filing; resolved
-  - [`aviation-maintenance-synthetic.json`](examples/aviation-maintenance-synthetic.json) — fictional maintenance AI review near-miss; no real aircraft, operator, person, or safety event
+  - [`aviation-maintenance-synthetic.json`](profiles/aviation/examples/aviation-maintenance-synthetic.json) — fictional maintenance AI review near-miss; no real aircraft, operator, person, or safety event
 - [`profiles/aviation.md`](profiles/aviation.md) — optional aviation profile guidance and its limits
 
 ## Status

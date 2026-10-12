@@ -8,7 +8,8 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = json.loads((ROOT / "incident-card.schema.json").read_text(encoding="utf-8"))
-EXAMPLE = json.loads((ROOT / "examples" / "aviation-maintenance-synthetic.json").read_text(encoding="utf-8"))
+PROFILE_EXAMPLE = ROOT / "profiles" / "aviation" / "examples" / "aviation-maintenance-synthetic.json"
+EXAMPLE = json.loads(PROFILE_EXAMPLE.read_text(encoding="utf-8"))
 VALIDATOR = Draft202012Validator(SCHEMA, format_checker=FormatChecker())
 
 
@@ -17,7 +18,7 @@ class AviationProfileTests(unittest.TestCase):
         Draft202012Validator.check_schema(SCHEMA)
 
     def test_all_examples_validate(self):
-        for path in (ROOT / "examples").glob("*.json"):
+        for path in [*(ROOT / "examples").glob("*.json"), PROFILE_EXAMPLE]:
             with self.subTest(path=path.name):
                 document = json.loads(path.read_text(encoding="utf-8"))
                 self.assertEqual([], list(VALIDATOR.iter_errors(document)))

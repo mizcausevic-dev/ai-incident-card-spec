@@ -5,7 +5,9 @@ name: Validate examples
 # based on its top-level version field, then ajv-checked against the bundled
 # JSON Schema 2020-12 document.
 #
-# Fails the PR if any example regresses against the schema.
+# The published v0.1.0 action bundles the baseline schema, so aviation profile
+# examples live under profiles/ and are checked below against this repo's
+# current schema. Fails the PR if either validation path regresses.
 
 on:
   push:
